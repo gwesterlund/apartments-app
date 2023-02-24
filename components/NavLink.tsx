@@ -33,7 +33,6 @@ const NavLink = ({
         linkPathname === activePathname
           ? `${className} ${activeClassName}`.trim()
           : className;
-      console.log({ newClassName });
 
       if (newClassName !== computedClassName) {
         setComputedClassName(newClassName);

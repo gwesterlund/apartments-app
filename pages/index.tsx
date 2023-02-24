@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Alert, Button, Modal } from "react-bootstrap";
 import Head from "next/head";
-import Link from "next/link";
+// import Link from "next/link";
 
 import Layout from "@/components/Layout";
 
 export default function Home() {
-  const [showModal, setShowModal] = useState(false);
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  // const [showModal, setShowModal] = useState(false);
+  // const handleClose = () => setShowModal(false);
+  // const handleShow = () => setShowModal(true);
 
   return (
     <>

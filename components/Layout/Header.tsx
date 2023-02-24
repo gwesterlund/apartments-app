@@ -1,9 +1,8 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
+
 import NavLink from "../NavLink";
-import { useRouter } from "next/router";
+import UserProfile from "./UserProfile";
 
 export default function Header() {
   return (
@@ -12,6 +11,9 @@ export default function Header() {
         <NavLink href="/" passHref legacyBehavior>
           <Navbar.Brand href="/">Apartments</Navbar.Brand>
         </NavLink>
+        <Nav className="ms-auto me-2">
+          <UserProfile />
+        </Nav>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
