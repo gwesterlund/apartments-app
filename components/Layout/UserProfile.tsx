@@ -1,40 +1,76 @@
-import React from "react";
-import { Button, Dropdown } from "react-bootstrap";
+import React, { useEffect, useState, useRef } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { User } from "react-feather";
+import Link from "next/link";
+import { ListGroup, Button } from "react-bootstrap";
+
+const Dropdown = ({ children }) => {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    // If the item is active (ie open) then listen for clicks outside
+    if (isActive) {
+      window.addEventListener("click", onClick);
+    }
+
+    return () => {
+      window.removeEventListener("click", onClick);
+    };
+  }, [isActive]);
+
+  const onClick = (e) => {
+    e.stopPropagation();
+    setIsActive(!isActive);
+  };
+
+  return (
+    <div className="menu-container">
+      <button onClick={onClick} className="menu-trigger">
+        <User size={24} />
+      </button>
+      <nav className={`menu ${isActive ? "active" : "inactive"}`}>
+        {children}
+      </nav>
+    </div>
+  );
+};
 
 export default function UserProfile() {
   const { data: session } = useSession();
 
   return session ? (
     <Dropdown>
-      <Dropdown.Toggle id="dropdown-basic">
+      <div className="profile-card" style={{ padding: "15px" }}>
         {session?.user?.displayName}
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        {session?.user?.accountType === "LANDLORD" && (
-          <>
-            <Dropdown.Item href="#/action-1">Landlord Action 1</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Landlord Action 2</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Landlord Action 3</Dropdown.Item>
-          </>
-        )}
-        {session?.user?.accountType === "TENANT" && (
-          <>
-            <Dropdown.Item href="#/action-1">Tenant Action 1</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Tenant Action 2</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Tenant Action 3</Dropdown.Item>
-          </>
-        )}
-        <Dropdown.Divider />
-        <Dropdown.Item
-          onClick={() => {
-            signOut({ callbackUrl: "/" });
-          }}
-        >
-          Sign Out
-        </Dropdown.Item>
-      </Dropdown.Menu>
+      </div>
+      <Button
+        className="mx-2 my-2"
+        onClick={() => {
+          signOut({ callbackUrl: "/" });
+        }}
+      >
+        Sign Out
+      </Button>
+      {session?.user?.accountType === "LANDLORD" && (
+        <ListGroup>
+          <ListGroup.Item action href="#/action-1">
+            Landlord Action 1
+          </ListGroup.Item>
+          <ListGroup.Item action href="#/action-2">
+            Landlord Action 2
+          </ListGroup.Item>
+        </ListGroup>
+      )}
+      {session?.user?.accountType === "TENANT" && (
+        <ListGroup>
+          <ListGroup.Item action href="#/action-1">
+            Tenant Action 1
+          </ListGroup.Item>
+          <ListGroup.Item action href="#/action-2">
+            Tenant Action 2
+          </ListGroup.Item>
+        </ListGroup>
+      )}
     </Dropdown>
   ) : (
     <Button

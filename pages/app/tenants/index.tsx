@@ -1,4 +1,4 @@
-import { Alert } from "react-bootstrap";
+import { Alert, Card, Col, Container, Row } from "react-bootstrap";
 import Head from "next/head";
 
 import Layout from "@/components/Layout";
@@ -15,10 +15,23 @@ export default function TenantPortal() {
       </Head>
       <Layout>
         <SessionGuard accountType="TENANT">
-          <h1>Tenant Portal - Home</h1>
-          <Alert variant="primary">
-            Landing page for tenant - supposedly active/rented property
-          </Alert>
+          <Container>
+            <Row>
+              <Col>
+                <h1>Tenant Portal - Home</h1>
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <Card.Title>My Apartment</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">
+                      1234 N 1st Str 95120 CA
+                    </Card.Subtitle>
+                    <Card.Text>No new invoices</Card.Text>
+                    <Card.Link href="#">Maintenance Request</Card.Link>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
         </SessionGuard>
       </Layout>
     </>

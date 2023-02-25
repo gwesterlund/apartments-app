@@ -21,17 +21,16 @@ export default function Home() {
             </Col>
           </Row>
         </Container>
-        <Container>
+        <Container className="my-4">
           <Row>
-            <Col>Container with 1.5rem gutter</Col>
+            <Col>
+              <Alert variant="primary">
+                <p>Ideas for Landing Page</p>
+                <p>Enter ZIP code - show list of apartments</p>
+              </Alert>
+            </Col>
           </Row>
         </Container>
-        <Container fluid>
-          <Row>
-            <Col>Full witdth</Col>
-          </Row>
-        </Container>
-        <Alert variant="primary">Landing Page</Alert>
       </Layout>
     </>
   );

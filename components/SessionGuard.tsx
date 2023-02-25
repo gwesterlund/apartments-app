@@ -21,7 +21,7 @@ const SessionGuard = ({
     LANDLORD: {
       errorMessage: <p>This area is restricted to landlords only.</p>,
       usefulLinks: [
-        <Link key="landlord-portal" href="/landlord-portal">
+        <Link key="landlord-portal" href="/app/landlords">
           <Button>Go to Landlord Portal</Button>
         </Link>,
       ],
@@ -29,7 +29,7 @@ const SessionGuard = ({
     TENANT: {
       errorMessage: <p>This area is restricted to tenants only.</p>,
       usefulLinks: [
-        <Link key="tenant-portal" href="/tenant-portal">
+        <Link key="tenant-portal" href="/app/tenants">
           <Button>Go to Tenant Portal</Button>
         </Link>,
       ],

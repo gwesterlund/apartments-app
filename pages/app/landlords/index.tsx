@@ -15,9 +15,10 @@ export default function LandlordPortal() {
       </Head>
       <Layout>
         <SessionGuard accountType="LANDLORD">
-          <h1>Landlord Portal - Home</h1>
+          <h1>Landlord Portal - Dashboard</h1>
           <Alert variant="primary">
-            Landing page for landlords - supposedly summary on all properties, some sort of dashboard with charts and moneys.
+            Landing page for landlords - supposedly summary on all properties,
+            some sort of dashboard with charts and moneys.
           </Alert>
         </SessionGuard>
       </Layout>
