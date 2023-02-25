@@ -1,0 +1,22 @@
+.navbar a {text-decoration: none;}
+
+.container-fluid {
+    --bs-gutter-x: 0rem;
+    overflow-x: hidden;
+}
+.container {
+    --bs-gutter-x: 1.5rem;
+}
+
+footer {
+    width: 100%;
+    background-color: #f8f9fa;
+    padding:  20px;
+}
+
+.carousel-caption {
+    backdrop-filter: blur(1px);
+    text-shadow: 1px 1px 1px #000000;
+}
+
+.carousel-inner{width: 100%;}

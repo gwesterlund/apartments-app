@@ -1,6 +1,5 @@
 import React from "react";
-import { Container, Navbar, Nav, Button } from "react-bootstrap";
-
+import { Container, Navbar, Nav } from "react-bootstrap";
 import NavLink from "../NavLink";
 import UserProfile from "./UserProfile";
 

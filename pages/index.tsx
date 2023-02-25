@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-import { Alert, Button, Modal } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import Head from "next/head";
-// import Link from "next/link";
 
 import Layout from "@/components/Layout";
+import Carousel from "@/components/Carousel";
 
 export default function Home() {
-  // const [showModal, setShowModal] = useState(false);
-  // const handleClose = () => setShowModal(false);
-  // const handleShow = () => setShowModal(true);
-
   return (
     <>
       <Head>
@@ -19,30 +14,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
+        <Container fluid>
+          <Row>
+            <Col>
+              <Carousel />
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+          <Row>
+            <Col>Container with 1.5rem gutter</Col>
+          </Row>
+        </Container>
+        <Container fluid>
+          <Row>
+            <Col>Full witdth</Col>
+          </Row>
+        </Container>
         <Alert variant="primary">Landing Page</Alert>
-        {/* <Link href="/contact">
-          <Button variant="primary">Contact</Button>
-        </Link>
-        <Button variant="primary" onClick={handleShow}>
-          Launch demo modal
-        </Button>
-
-        <Modal show={showModal} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Woohoo, you&apos;re reading this text in a modal!
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal> */}
       </Layout>
     </>
   );
