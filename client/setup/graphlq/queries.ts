@@ -6,6 +6,9 @@ export const GET_PROPERTIES = gql`
       id
       type
       displayName
+      squareFeet
+      price
+      rentalTime
       address {
         street
       }
@@ -26,6 +29,11 @@ export const GET_PROPERTY = gql`
       id
       type
       displayName
+      squareFeet
+      price
+      rentalTime
+      beds
+      baths
       address {
         street
       }
@@ -46,6 +54,11 @@ export const SEARCH_PROPERTIES = gql`
       id
       type
       displayName
+      squareFeet
+      price
+      rentalTime
+      beds
+      baths
       address {
         street
       }
@@ -65,6 +78,11 @@ export const CREATE_PROPERTY = gql`
     createProperty(data: $data) {
       type
       displayName
+      squareFeet
+      price
+      rentalTime
+      beds
+      baths
       address {
         street
       }

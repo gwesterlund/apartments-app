@@ -17,7 +17,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <div className="layout-container">
+    <div className="layout-container no-select">
       <div className={`layout-header ${scrolled ? "sticky" : ""}`}>
         <Header />
       </div>

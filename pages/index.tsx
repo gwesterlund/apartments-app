@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Alert,
-  Form,
-  Button,
-  ListGroup,
-  ListGroupItem,
-} from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Head from "next/head";
 
 import Layout from "@/components/Layout";
@@ -18,6 +9,7 @@ import Image from "next/image";
 import { useLazyQuery } from "@apollo/client";
 import { SEARCH_PROPERTIES } from "@/client/setup/graphlq/queries";
 import Link from "next/link";
+import PropertyCard from "@/components/properties/PropertyCard";
 
 export default function Home() {
   const [zipCode, setZipCode] = useState("");
@@ -77,16 +69,11 @@ export default function Home() {
                 </Form>
                 {loading && <h4>LOADING</h4>}
                 {data?.result && (
-                  <ListGroup>
+                  <Row xs={1} md={3} lg={4} className="g-3 pt-3">
                     {data?.result.map((e, i) => (
-                      <ListGroupItem key={i}>
-                        <Link href={`/properties/${e.id}`}>
-                          <div>{e.displayName}</div>
-                          <div>{e.address.street}</div>
-                        </Link>
-                      </ListGroupItem>
+                      <PropertyCard property={e} key={i} />
                     ))}
-                  </ListGroup>
+                  </Row>
                 )}
               </div>
             </Col>

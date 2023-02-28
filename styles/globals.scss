@@ -48,7 +48,7 @@ body {
 
   .layout-body {
     flex: 1 1 auto;
-    padding: 30px 0;
+    padding: 0;
   }
 
   .layout-footer {
@@ -88,6 +88,9 @@ body {
 .carousel-inner {
   width: 100%;
 }
+
+
+
 
 // menu-dropdown
 
@@ -157,4 +160,106 @@ body {
     padding: 15px 20px;
     display: block;
   }
+}
+
+
+//Cards
+
+.card a, a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: #2a2a33;
+}
+
+
+//Keen Slider
+
+
+
+
+.navigation-wrapper {
+  position: relative;
+  background-color: #386641;
+  padding: 50px 0;
+  
+}
+
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #c5c5c5;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: #000;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #fff;
+  cursor: pointer;
+}
+
+.arrow--left {
+  left: 5px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 5px;
+}
+
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+
+
+//fix for images in slider
+.image-container {
+
+  width: 100%;
+
+  >div {
+    position: unset !important;
+  }
+
+  .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
+}
+.no-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.no-select:focus {
+  outline: none !important;
 }

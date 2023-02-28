@@ -7,7 +7,12 @@ const chance = new Chance();
 const properties = Array.apply(null, Array(100)).map((_, i) => ({
   id: (i + 1).toString(),
   type: "SINGLE_FAMILY_BUILDING",
-  displayName: `Cozy House ${i + 1}`,
+  displayName: chance.pickone(["Single Family", "Townhome", "Condominium", "Apartment", "Studio", "Unit" ]),
+  squareFeet: 2000,
+  price: 3000,
+  rentalTime: chance.pickone(["day", "week", "month"]),
+  beds: 2,
+  baths: 2,
   address: {
     street: chance.address(),
     zip: chance.pickone(["95100", "95101", "95102", "95103", "95104"]),
@@ -119,6 +124,11 @@ const typeDefs = gql`
     displayName: String
     address: Address
     status: PropertyStatus
+    squareFeet: Float
+    price: Float
+    rentalTime: String
+    beds: Float
+    baths: Float
     owner: Contact
     manager: Contact
     overallRating: Rating
@@ -132,6 +142,11 @@ const typeDefs = gql`
     displayName: String
     address: Address
     status: RentalUnitStatus
+    squareFeet: Float
+    price: Float
+    rentalTime: String
+    beds: Float
+    baths: Float
     owner: Contact
     manager: Contact
     overallRating: Rating
@@ -176,7 +191,7 @@ const resolvers = {
       return properties.find((e) => e.id === id);
     },
     searchProperties: (_, { zip }) => {
-      return properties.filter((e) => e.address.zip === zip);
+      return properties.filter((e) => e.address.zip === zip).slice(0, 12);
     },
   },
   Mutation: {
