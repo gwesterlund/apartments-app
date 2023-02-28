@@ -1,8 +1,9 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import "@/styles/bootstrap.scss";
 import "@/styles/globals.scss";
 
 export default function App({
@@ -17,6 +18,10 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <ApolloProvider client={client}>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <Component {...pageProps} />
       </ApolloProvider>
     </SessionProvider>

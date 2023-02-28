@@ -14,7 +14,7 @@ const NavLink = ({
   ...props
 }: PropsWithChildren<NavLinkProps>) => {
   const { asPath, isReady } = useRouter();
-  const [computedClassName, setComputedClassName] = useState(className);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     // Check if the router fields are updated client-side
@@ -29,27 +29,17 @@ const NavLink = ({
       // Using URL().pathname to get rid of query and hash
       const activePathname = new URL(asPath, location.href).pathname;
 
-      const newClassName =
-        linkPathname === activePathname
-          ? `${className} ${activeClassName}`.trim()
-          : className;
-
-      if (newClassName !== computedClassName) {
-        setComputedClassName(newClassName);
-      }
+      setIsActive(linkPathname === activePathname);
     }
-  }, [
-    asPath,
-    isReady,
-    props.as,
-    props.href,
-    activeClassName,
-    className,
-    computedClassName,
-  ]);
+  }, [asPath, isReady, props.as, props.href]);
 
   return (
-    <Link className={computedClassName} {...props}>
+    <Link
+      className={[className, isActive && activeClassName]
+        .filter((e) => e)
+        .join(" ")}
+      {...props}
+    >
       {children}
     </Link>
   );

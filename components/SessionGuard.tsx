@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { Alert, Button } from "react-bootstrap";
+import { Alert, Button, Col, Container, Row } from "react-bootstrap";
 
 type SessionGuardProps = {
   accountType: "LANDLORD" | "TENANT";
@@ -39,14 +39,20 @@ const SessionGuard = ({
   if (accountType === session?.user?.accountType) return <>{children}</>;
 
   return (
-    <Alert>
-      <h2>You are not supposed to be here!</h2>
-      {accountTypes[accountType]?.errorMessage}
-      <Link key="landing-page" href="/">
-        <Button>Go to Home page</Button>
-      </Link>
-      {accountTypes[session?.user?.accountType]?.usefulLinks}
-    </Alert>
+    <Container>
+      <Row>
+        <Col>
+          <h2 style={{ color: "#f2e8cf" }}>Access denied!</h2>
+          <Alert variant="warning" style={{ marginTop: "15px" }}>
+            {accountTypes[accountType]?.errorMessage}
+            <Link key="landing-page" href="/" style={{ marginRight: "10px" }}>
+              <Button>Go to Home page</Button>
+            </Link>
+            {accountTypes[session?.user?.accountType]?.usefulLinks}
+          </Alert>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

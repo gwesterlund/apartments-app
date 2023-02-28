@@ -18,8 +18,8 @@ export default function TenantPortal() {
           <Container>
             <Row>
               <Col>
-                <h1>Tenant Portal - Home</h1>
-                <Card style={{ width: "18rem" }}>
+                <h2 style={{ color: "#f2e8cf" }}>Tenant Portal - Home</h2>
+                <Card style={{ width: "18rem", marginTop: "15px" }}>
                   <Card.Body>
                     <Card.Title>My Apartment</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">

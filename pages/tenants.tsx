@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 import { Inter } from "@next/font/google";
-import { Alert, Button } from "react-bootstrap";
+import { Alert, Button, Col, Container, Row } from "react-bootstrap";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,7 +17,15 @@ export default function Tenants() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Alert variant="primary">Tenants</Alert>
+        <Container>
+          <Row>
+            <Col>
+              <Alert variant="primary">
+                Information for Tenants - benefits and stuff
+              </Alert>
+            </Col>
+          </Row>
+        </Container>
       </Layout>
     </>
   );

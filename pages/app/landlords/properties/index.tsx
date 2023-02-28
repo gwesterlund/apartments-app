@@ -13,43 +13,17 @@ import Layout from "@/components/Layout";
 import SessionGuard from "@/components/SessionGuard";
 import { useState } from "react";
 
-import { useQuery, gql, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+
+import { GET_PROPERTIES } from "@/client/setup/graphlq/queries";
+import CreatePropertyView from "@/components/properties/CreatePropertyView";
 
 export default function Properties() {
-  const GET_PROPERTIES = gql`
-    {
-      result: getProperties {
-        address
-      }
-    }
-  `;
-
   const { data, loading, error } = useQuery(GET_PROPERTIES);
-  const [addProperty] = useMutation(gql`
-    mutation AddProperty($address: String) {
-      addProperty(address: $address) {
-        address
-      }
-    }
-  `);
-
-  const DEFAULT_FORM_DATA = { address: "" };
-  const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
 
   const [showAddPropertyModal, setShowAddPropertyModal] = useState(false);
 
-  const handleSave = () => {
-    addProperty({
-      variables: { address: formData.address },
-      refetchQueries: [GET_PROPERTIES],
-    });
-
-    setFormData(DEFAULT_FORM_DATA);
-    setShowAddPropertyModal(false);
-  };
-
   const handleClose = () => {
-    setFormData(DEFAULT_FORM_DATA);
     setShowAddPropertyModal(false);
   };
 
@@ -66,7 +40,9 @@ export default function Properties() {
           <Container>
             <Row>
               <Col>
-                <h1>Landlord Portal - Properties</h1>
+                <h2 style={{ color: "#f2e8cf" }}>
+                  Landlord Portal - Properties
+                </h2>
                 <Button
                   onClick={() => {
                     setShowAddPropertyModal(true);
@@ -76,39 +52,16 @@ export default function Properties() {
                 </Button>
                 <ListGroup>
                   {data?.result?.map((p, i) => (
-                    <ListGroup.Item key={i}>{p.address}</ListGroup.Item>
+                    <ListGroup.Item key={i}>{p.address.street}</ListGroup.Item>
                   ))}
                 </ListGroup>
                 <Modal show={showAddPropertyModal} onHide={handleClose}>
                   <Modal.Header closeButton>
-                    <Modal.Title>Add Property</Modal.Title>
+                    <Modal.Title>Create Property</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <Form>
-                      <Form.Group className="mb-3" controlId="address">
-                        <Form.Label>Address</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Enter property address"
-                          value={formData.address}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              address: e.target.value,
-                            })
-                          }
-                        />
-                      </Form.Group>
-                    </Form>
+                    <CreatePropertyView />
                   </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                      Close
-                    </Button>
-                    <Button variant="primary" onClick={handleSave}>
-                      Save Changes
-                    </Button>
-                  </Modal.Footer>
                 </Modal>
               </Col>
             </Row>

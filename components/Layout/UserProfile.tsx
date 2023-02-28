@@ -25,12 +25,10 @@ const Dropdown = ({ children }) => {
 
   return (
     <div className="menu-container">
-      <button onClick={onClick} className="menu-trigger">
+      <div onClick={onClick} className="menu-trigger">
         <User size={24} />
-      </button>
-      <nav className={`menu ${isActive ? "active" : "inactive"}`}>
-        {children}
-      </nav>
+      </div>
+      <nav className={`menu ${isActive ? "active" : ""}`}>{children}</nav>
     </div>
   );
 };
@@ -40,37 +38,42 @@ export default function UserProfile() {
 
   return session ? (
     <Dropdown>
-      <div className="profile-card" style={{ padding: "15px" }}>
-        {session?.user?.displayName}
-      </div>
-      <Button
-        className="mx-2 my-2"
-        onClick={() => {
-          signOut({ callbackUrl: "/" });
-        }}
-      >
-        Sign Out
-      </Button>
-      {session?.user?.accountType === "LANDLORD" && (
-        <ListGroup>
-          <ListGroup.Item action href="#/action-1">
-            Landlord Action 1
-          </ListGroup.Item>
-          <ListGroup.Item action href="#/action-2">
-            Landlord Action 2
-          </ListGroup.Item>
-        </ListGroup>
-      )}
-      {session?.user?.accountType === "TENANT" && (
-        <ListGroup>
-          <ListGroup.Item action href="#/action-1">
-            Tenant Action 1
-          </ListGroup.Item>
-          <ListGroup.Item action href="#/action-2">
-            Tenant Action 2
-          </ListGroup.Item>
-        </ListGroup>
-      )}
+      <ListGroup>
+        <ListGroup.Item
+          style={{ backgroundColor: "#f0f0f0", fontWeight: "bold" }}
+        >
+          {session?.user?.displayName}
+        </ListGroup.Item>
+        {session?.user?.accountType === "LANDLORD" && (
+          <>
+            <ListGroup.Item action href="#/action-1">
+              Landlord Action 1
+            </ListGroup.Item>
+            <ListGroup.Item action href="#/action-2">
+              Landlord Action 2
+            </ListGroup.Item>
+          </>
+        )}
+        {session?.user?.accountType === "TENANT" && (
+          <>
+            <ListGroup.Item action href="#/action-1">
+              Tenant Action 1
+            </ListGroup.Item>
+            <ListGroup.Item action href="#/action-2">
+              Tenant Action 2
+            </ListGroup.Item>
+          </>
+        )}
+        <ListGroup.Item
+          action
+          className="text-primary font-weight-bold"
+          onClick={() => {
+            signOut({ callbackUrl: "/" });
+          }}
+        >
+          Sign Out
+        </ListGroup.Item>
+      </ListGroup>
     </Dropdown>
   ) : (
     <Button

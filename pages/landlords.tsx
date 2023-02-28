@@ -12,10 +12,12 @@ export default function Landlords() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Container className="my-4">
+        <Container>
           <Row>
             <Col>
-              <Alert variant="primary">Information for Landlords - benefits and stuff</Alert>
+              <Alert variant="primary">
+                Information for Landlords - benefits and stuff
+              </Alert>
             </Col>
           </Row>
         </Container>
