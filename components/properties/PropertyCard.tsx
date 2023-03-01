@@ -6,7 +6,7 @@ export default function PropertyCard({ property }) {
   return (
     <Col>
       <Link href={`/properties/${property.id}`}>
-        <Card className="card border border-0 shadow rounded h-100 gap-0">
+        <Card className="search-card border border-0 shadow rounded h-100 gap-0">
           <div className="ratio ratio-16x9">
             <Image
               className="d-block w-100 card-img-top"

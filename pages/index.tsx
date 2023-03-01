@@ -67,17 +67,18 @@ export default function Home() {
                     Search
                   </Button>
                 </Form>
-                {loading && <h4>LOADING</h4>}
-                {data?.result && (
-                  <Row xs={1} md={3} lg={4} className="g-3 pt-3">
-                    {data?.result.map((e, i) => (
-                      <PropertyCard property={e} key={i} />
-                    ))}
-                  </Row>
-                )}
               </div>
             </Col>
           </Row>
+
+          {loading && <h4>LOADING</h4>}
+          {data?.result && (
+            <Row xs={1} md={3} lg={4} className="g-3 py-3">
+              {data?.result.map((e, i) => (
+                <PropertyCard property={e} key={i} />
+              ))}
+            </Row>
+          )}
         </Container>
       </Layout>
     </>

@@ -1,9 +1,19 @@
+
+//variables don't use just here so you can copy #hex easy
+$darkestGreen: #29442e;
+$darkGreen: #386641;
+$green: #6a994e;
+$lime: #a7c957;
+$beige: #f2e8cf;
+$brick: #bc4749;
+
 html {
   min-height: 100vh;
+  background: #6a994e;
 }
 
 body {
-  background: linear-gradient(#6a994e, #386641);
+  background: linear-gradient(#6a994e, #29442e);
   min-height: 100vh;
 
   & > div#__next {
@@ -11,12 +21,11 @@ body {
   }
 }
 
-//colors
-$darkgreen: #386641;
-$green: #6a994e;
-$lime: #a7c957;
-$beige: #f2e8cf;
-$brick: #bc4749;
+.container-full-height {
+  min-height: 100vh;
+}
+
+
 
 
 .layout-container {
@@ -25,7 +34,6 @@ $brick: #bc4749;
   flex-direction: column;
   justify-content: stretch;
   align-items: stretch;
-
   .layout-header {
     flex: 0 0 auto;
     top: 0;
@@ -62,7 +70,7 @@ $brick: #bc4749;
   .layout-footer {
     flex: 0 0 auto;
     padding: 10px 0;
-    background-color: rgba(0, 0, 0, 0.25);
+    border-top: 1px solid #6a994e;
 
     a {
       color: #6a994e;
@@ -96,6 +104,7 @@ $brick: #bc4749;
 .carousel-inner {
   width: 100%;
 }
+
 
 
 
@@ -172,11 +181,14 @@ $brick: #bc4749;
 
 
 //Cards
+.search-card {background-color: #a7c957; }
 
-.card a, a:link, a:visited, a:hover, a:active {
+.search-card a, a:link, a:visited, a:hover, a:active {
   text-decoration: none;
-  color: #2a2a33;
+  color: $darkestGreen;
+ 
 }
+
 
 
 //Keen Slider
@@ -187,7 +199,7 @@ $brick: #bc4749;
 .navigation-wrapper {
   position: relative;
   background-color: #386641;
-  padding: 50px 0;
+  padding: 25px 0px;
   
 }
 
@@ -270,4 +282,15 @@ $brick: #bc4749;
 
 .no-select:focus {
   outline: none !important;
+}
+
+
+//Pages
+
+
+//Property Page
+.property-page {
+  background: #a7c957;
+  min-height: 100vh;
+  color: #29442e;
 }

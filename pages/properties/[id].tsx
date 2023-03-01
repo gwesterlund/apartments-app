@@ -22,8 +22,6 @@ import { useQuery } from "@apollo/client";
 import { GET_PROPERTY } from "@/client/setup/graphlq/queries";
 import { useRouter } from "next/router";
 
-import PropertyCard from "@/components/properties/PropertyCard";
-
 export default function Home() {
   const router = useRouter();
   const { id } = router.query;
@@ -40,28 +38,67 @@ export default function Home() {
       </Head>
       <Layout>
         <PropertySlider />
-        <Container fluid>
+        <Container fluid className="container-full-height property-page">
           <Row>
             <Col>
-              <div className="">
-                <h3>
-                  ${data?.result?.price}/{data?.result?.rentalTime}
-                </h3>
-                <div className="small">
-                  <div className="fw-bold">{data?.result.displayName}</div>
-                  <div className="fw-light text-truncate">
-                    {data?.result.address.street}
+              <Row
+                xs={1}
+                md={2}
+                className="g-3 py-3"
+                style={{ border: "1px solid red" }}
+              >
+                <Col>
+                  <h3>
+                    ${data?.result?.price}/{data?.result?.rentalTime}
+                  </h3>
+                  <div className="small">
+                    <div className="fw-bold">{data?.result.displayName}</div>
+                    <div className="fw-light text-truncate">
+                      {data?.result.address.street}
+                    </div>
+                    <span className="fw-bold">{data?.result?.beds}</span>
+                    <span className="fw-light"> bds</span>
+                    {" | "}
+                    <span className="fw-bold">{data?.result.baths}</span>
+                    <span className="fw-light"> ba</span>
+                    {" | "}
+                    <span className="fw-bold">{data?.result.squareFeet}</span>
+                    <span className="fw-light"> sqft</span>
                   </div>
-                  <span className="fw-bold">{data?.result?.beds}</span>
-                  <span className="fw-light"> bds</span>
-                  {" | "}
-                  <span className="fw-bold">{data?.result.baths}</span>
-                  <span className="fw-light"> ba</span>
-                  {" | "}
-                  <span className="fw-bold">{data?.result.squareFeet}</span>
-                  <span className="fw-light"> sqft</span>
-                </div>
-              </div>
+                </Col>
+                <Col style={{ border: "1px solid red" }}>Something else</Col>
+              </Row>
+            </Col>
+            <Col>
+              <Row
+                xs={1}
+                sm={1}
+                md={2}
+                lg={4}
+                className="g-3 py-3"
+                style={{ border: "1px solid red" }}
+              >
+                <Col style={{ border: "1px solid red" }}>
+                  1 dfdsfjds iofjd fjods{" "}
+                </Col>
+                <Col>2 dfsfdoisjoif djiof </Col>
+                <Col>3 dfdsofj oidsfj jsdfj odsj</Col>
+                <Col>4 ads fdjsofjo jdfdsjof </Col>
+              </Row>
+              <Row
+                xs={1}
+                md={2}
+                lg={4}
+                className="g-3 py-3"
+                style={{ border: "1px solid red" }}
+              >
+                <Col style={{ border: "1px solid red" }}>
+                  1 dfdsfjds iofjd fjods{" "}
+                </Col>
+                <Col>2 dfsfdoisjoif djiof </Col>
+                <Col>3 dfdsofj oidsfj jsdfj odsj</Col>
+                <Col>4 ads fdjsofjo jdfdsjof </Col>
+              </Row>
             </Col>
           </Row>
         </Container>
