@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions = {
   // Configure one or more authentication providers
+  secret: "wFX4KcYukIHns1DhOAY2ohTuKva1Xbmvx8QCIz8puh0=",
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')

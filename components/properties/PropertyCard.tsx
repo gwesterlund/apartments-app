@@ -1,11 +1,13 @@
-import { Col, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import Image from "next/image";
 import Link from "next/link";
+
+import styles from "./PropertyCard.module.scss";
 
 export default function PropertyCard({ property }) {
   return (
     <Link href={`/properties/${property.id}`}>
-      <Card className="search-card border border-0 shadow rounded h-100 gap-0">
+      <Card className={styles["property-card"]}>
         <div className="ratio ratio-16x9">
           <Image
             className="d-block w-100 card-img-top"

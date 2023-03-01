@@ -19,14 +19,14 @@ export default function PropertySlider() {
     loop: true,
     breakpoints: {
       "(min-width: 576px)": {
-        slides: { perView: 2, spacing: 5 },
+        slides: { perView: 2, spacing: 10 },
       },
       "(min-width: 992px)": {
-        slides: { perView: 3, spacing: 10 },
-      },
-      "(min-width: 1200px)": {
         slides: { perView: 4, spacing: 10 },
       },
+      // "(min-width: 1200px)": {
+      //   slides: { perView: 1, spacing: 10 },
+      // },
     },
     slides: { perView: 1 },
   });

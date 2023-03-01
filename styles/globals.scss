@@ -1,4 +1,3 @@
-
 //variables don't use just here so you can copy #hex easy
 $darkestGreen: #29442e;
 $darkGreen: #386641;
@@ -24,9 +23,6 @@ body {
 .container-full-height {
   min-height: 100vh;
 }
-
-
-
 
 .layout-container {
   display: flex;
@@ -88,7 +84,7 @@ body {
   flex-direction: column;
   padding: 15px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 .carousel {
@@ -104,10 +100,6 @@ body {
 .carousel-inner {
   width: 100%;
 }
-
-
-
-
 
 // menu-dropdown
 
@@ -179,28 +171,28 @@ body {
   }
 }
 
-
 //Cards
-.search-card {background-color: #a7c957; }
-
-.search-card a, a:link, a:visited, a:hover, a:active {
-  text-decoration: none;
-  color: $darkestGreen;
- 
+.search-card {
+  background-color: #a7c957;
 }
 
-
+.search-card a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: $darkestGreen;
+}
 
 //Keen Slider
 
-
-
-
 .navigation-wrapper {
   position: relative;
-  background-color: #386641;
-  padding: 25px 0px;
-  
+  // background-color: #386641;
+  // padding: 25px 0px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .dots {
@@ -252,14 +244,11 @@ body {
   fill: rgba(255, 255, 255, 0.5);
 }
 
-
-
 //fix for images in slider
 .image-container {
-
   width: 100%;
 
-  >div {
+  > div {
     position: unset !important;
   }
 
@@ -284,9 +273,7 @@ body {
   outline: none !important;
 }
 
-
 //Pages
-
 
 //Property Page
 .property-page {
